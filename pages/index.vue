@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import TitleComponent from "~/components/Parts/TitleComponent.vue";
 
 const title = ref('page');
 

@@ -20,4 +20,8 @@ npm run dev -- -o
         npm i --save-dev @mdx-js/react@1 --force
         ```
 * atomic design
-* test
+  * 開発者向けにアレンジするのがベターとのこと。
+  * [これ](https://zenn.dev/offers/articles/20220523-component-design-best-practice)を参考にやってみる
+
+* テスト
+  * 未対応
