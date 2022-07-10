@@ -1,7 +1,7 @@
 import SampleButton from '../SampleButton.vue'
 
 export default {
-  title: 'Button/SampleButton',
+  title: 'Sample/SampleButton',
   component: SampleButton,
   argTypes: {
     click: {
