@@ -19,20 +19,22 @@ withDefaults(defineProps<PropType>(), {
 
 <style scoped>
 .box {
+  background: #c7cdff;
   color: #1f35fa;
   border: double 10px #1f35fa;
   padding: 0.5em 1em;
-  margin: 2em 0;
+  margin: 0px;
   width: 80px;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  text-align:center;
+  /* justify-content: center;
+  align-items: center; */
   font-size: 25px;
 }
 
 .box p {
-  padding: 0;
-  margin: 0;
+  padding: 10px 0px;
+  margin: 0px;
 }
 </style>
