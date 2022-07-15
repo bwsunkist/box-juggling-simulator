@@ -13,6 +13,7 @@
   width: 120px;
   height: 120px;
   background: #fddaaf;
+  margin: 0px;
 }
 
 .body {
@@ -20,5 +21,6 @@
   width: 120px;
   height: 120px;
   background: #9fff7f;
+  margin: 0px;
 }
 </style>

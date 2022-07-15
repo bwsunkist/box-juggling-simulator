@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Box from '../Parts/Box.vue'
 import Hand from '../Parts/Hand.vue'
-import Parson from '../Parts/Parson.vue'
+import Person from '../Parts/Person.vue'
 
 </script>
 
@@ -23,8 +23,15 @@ import Parson from '../Parts/Parson.vue'
       </div>
     </div>
   </div>
-  <Hand isHold:false isRight:true></Hand>
-  <Person></Person>
+  <div class="person">
+    <Person></Person>
+  </div>
+  <div class="hand">
+    <Hand isHold:false isRight:true></Hand>
+  </div>
+  <div class="hand">
+    <Hand isHold:false isRight:false></Hand>
+  </div>
 </template>
 
 <style scoped>
@@ -32,16 +39,35 @@ import Parson from '../Parts/Parson.vue'
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  width: 3000px;
+  width: 100%;
+  z-index: 5;
+  margin-top: 180px;
+  justify-content: center;
+  align-items: center;
 }
 .zoneWrap1 {
-  width:fit-content;
+  width: fit-content;
   margin: 5px;
   padding: 0px;
+  z-index: 5;
 }
 .boxWrap {
-  width:fit-content;
+  width: fit-content;
   margin: 0px;
   padding: 0px;
+}
+
+.hand {
+  z-index: 10;
+}
+.person {
+  width: 150px;
+  margin: -280px auto;
+  z-index: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>
