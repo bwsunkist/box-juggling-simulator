@@ -21,3 +21,7 @@ export const Primary = Template.bind({})
 Primary.args = {
   message: 'test1',
 }
+export const LongName = Template.bind({})
+LongName.args = {
+  message: 'testtest1',
+}

@@ -1,18 +1,23 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 
 interface PropType {
   message?: string
 }
-withDefaults(defineProps<PropType>(), {
+const prop = withDefaults(defineProps<PropType>(), {
   message: 'sample',
 })
+
+const trimmedMsg = computed(
+  () => { return prop.message.slice(0, 5) }
+);
 
 </script>
 
 <template>
   <div class="box">
     <p>
-      {{ message }}
+      {{ trimmedMsg }}
     </p>
   </div>
 </template>
