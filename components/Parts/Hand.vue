@@ -22,6 +22,9 @@ withDefaults(defineProps<PropType>(), {
 .flex {
   display: flex;
   flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
+  width: fit-content;
 }
 
 .flipHorizontal {

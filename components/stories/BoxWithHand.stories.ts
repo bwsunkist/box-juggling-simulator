@@ -17,28 +17,56 @@ const Template = (args) => ({
   `,
 })
 
-export const RH = Template.bind({})
-RH.args = {
-  message: 'rightHold',
+export const rightHold = Template.bind({})
+rightHold.args = {
+  message: 'RH',
   isHold: true,
   isRight: true
 }
-export const RNotH = Template.bind({})
-RNotH.args = {
-  message: 'rightNotHold',
+export const rightHoldRotate = Template.bind({})
+rightHoldRotate.args = {
+  message: 'RHR',
+  isHold: true,
+  isRight: true,
+  rotate: true
+}
+export const rightNotHold = Template.bind({})
+rightNotHold.args = {
+  message: 'RNotH',
   isHold: false,
   isRight: true
+}
+export const rightNotHoldRotate = Template.bind({})
+rightNotHoldRotate.args = {
+  message: 'RNoHR',
+  isHold: false,
+  isRight: true,
+  rotate: true
 }
 
-export const LH = Template.bind({})
-LH.args = {
-  message: 'leftHold',
+export const leftHold = Template.bind({})
+leftHold.args = {
+  message: 'LH',
   isHold: true,
   isRight: false
 }
-export const LNotH = Template.bind({})
-LNotH.args = {
-  message: 'leftNotHold',
+export const leftHoldRotate = Template.bind({})
+leftHoldRotate.args = {
+  message: 'LH',
+  isHold: true,
+  isRight: false,
+  rotate: true
+}
+export const leftNotHold = Template.bind({})
+leftNotHold.args = {
+  message: 'LNotH',
   isHold: false,
   isRight: false
+}
+export const leftNotHoldRotate = Template.bind({})
+leftNotHoldRotate.args = {
+  message: 'LNotH',
+  isHold: false,
+  isRight: false,
+  rotate: true
 }
