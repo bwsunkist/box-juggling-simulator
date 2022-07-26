@@ -12,7 +12,7 @@ withDefaults(defineProps<PropType>(), {
 </script>
 
 <template>
-  <div :class="{ flex: true, flipHorizontal: !isRight }">
+  <div :class="{ flex: true, flipHorizontal: !isRight }" :draggable="!isHold">
     <div :class="{ close: isHold, open: !isHold, reverse: !isRight }"></div>
     <div :class="{ closeThumb: isHold, openThumb: !isHold, reverse: !isRight }"></div>
   </div>
