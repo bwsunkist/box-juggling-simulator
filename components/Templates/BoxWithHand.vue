@@ -39,11 +39,11 @@ const { isHold, isRight, message, rotate } = toRefs(props)
 }
 .holdRotate {
   transform:rotate(180deg);
-  transform-origin: 50% 210%;
+  transform-origin: 50% 40%;
 }
 .notHoldRotate {
   transform:rotate(180deg);
-  transform-origin: 50% 50%;
+  transform-origin: 50% 40%;
 }
 .boxWrap {
   width: fit-content;
