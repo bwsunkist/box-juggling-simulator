@@ -2,17 +2,18 @@
 import Hand from '../Parts/Hand.vue'
 import OperationButton from '../Parts/OperationButton.vue'
 import BoxWithHand from '../Templates/BoxWithHand.vue'
+import { ref } from 'vue'
 
 const boxes = [
   {
     isHold: true,
     isRight: false,
     message: 'box1',
-    rotate: true
+    rotate: false
   },
   {
     isHold: false,
-    isRight: true,
+    isRight: false,
     message: 'box2',
     rotate: false
   },
@@ -24,23 +25,18 @@ const boxes = [
   },
 ]
 
-const leftHand = {
-  isShow: false
-}
-
-const rightHand = {
-  isShow: false
-}
+let isShowLeftHand = ref<boolean>(false)
+let isShowRightHand = ref<boolean>(false)
 
 </script>
 
 <template>
   <div class="jugglingArea">
     <div class="leftHand">
-      <Hand :isHold="false" :isRight="false" v-show="leftHand.isShow"></Hand>
+      <Hand :isHold="false" :isRight="false" v-show="isShowLeftHand"></Hand>
     </div>
     <div class="rightHand">
-      <Hand :isHold="false" :isRight="true" v-show="rightHand.isShow"></Hand>
+      <Hand :isHold="false" :isRight="true" v-show="isShowRightHand"></Hand>
     </div>
     <div class="boxWrap">
       <div v-for="(box, index) in boxes" >
