@@ -7,6 +7,11 @@ const prop = withDefaults(defineProps<PropType>(), {
   isRight: true,
 })
 
+const emit = defineEmits(['release', 'twist'])
+const click = (operationType: 'release' | 'twist') => {
+  emit(operationType, null)
+}
+
 </script>
 
 <template>
@@ -18,12 +23,12 @@ const prop = withDefaults(defineProps<PropType>(), {
     </div>
     <div class="operationWrap">
       <div class="operationBox">
-        <button class="operationButton">
+        <button class="operationButton" @click="click('release')">
           Release
         </button>
       </div>
       <div class="operationBox">
-        <button class="operationButton">
+        <button class="operationButton" @click="click('twist')">
           Twist
         </button>
       </div>

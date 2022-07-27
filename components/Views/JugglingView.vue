@@ -31,21 +31,15 @@ let isShowRightHand = ref<boolean>(false)
 const release = (isRight: boolean) => {
   if (isRight) {
     isShowRightHand.value = true
-    boxes.forEach((box, index) => {
-      if (box.isHold && box.isRight) {
-        boxes[index].isHold = false
-        boxes[index].isRight = false
-      }
-    })
   } else {
     isShowLeftHand.value = true
-    boxes.forEach((box, index) => {
-      if (box.isHold && !box.isRight) {
-        boxes[index].isHold = false
-        boxes[index].isRight = false
-      }
-    })
   }
+  boxes.forEach((box, index) => {
+    if (box.isHold && isRight === box.isRight) {
+      boxes[index].isHold = false
+      boxes[index].isRight = false
+    }
+  })
 }
 
 </script>
@@ -64,8 +58,8 @@ const release = (isRight: boolean) => {
       </div>
     </div>
     <div class="operationArea">
-      <OperationButton :isRight="false" @click="release(false)"></OperationButton>
-      <OperationButton :isRight="true" @click="release(true)"></OperationButton>
+      <OperationButton :isRight="false" @release="release(false)"></OperationButton>
+      <OperationButton :isRight="true" @release="release(true)"></OperationButton>
     </div>
   </div>
 </template>
