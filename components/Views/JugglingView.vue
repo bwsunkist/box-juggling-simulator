@@ -2,9 +2,9 @@
 import Hand from '../Parts/Hand.vue'
 import OperationButton from '../Parts/OperationButton.vue'
 import BoxWithHand from '../Templates/BoxWithHand.vue'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
-const boxes = [
+const boxes = reactive([
   {
     isHold: true,
     isRight: false,
@@ -23,7 +23,7 @@ const boxes = [
     message: 'box3',
     rotate: false
   },
-]
+])
 
 let isShowLeftHand = ref<boolean>(false)
 let isShowRightHand = ref<boolean>(false)
@@ -42,6 +42,13 @@ const release = (isRight: boolean) => {
   })
 }
 
+const twist = (isRight: boolean) => {
+  boxes.forEach((box, index) => {
+    if (box.isHold && isRight === box.isRight) {
+      boxes[index].rotate = !boxes[index].rotate
+    }
+  })
+}
 </script>
 
 <template>
@@ -58,8 +65,8 @@ const release = (isRight: boolean) => {
       </div>
     </div>
     <div class="operationArea">
-      <OperationButton :isRight="false" @release="release(false)"></OperationButton>
-      <OperationButton :isRight="true" @release="release(true)"></OperationButton>
+      <OperationButton :isRight="false" @release="release(false)" @twist="twist(false)"></OperationButton>
+      <OperationButton :isRight="true" @release="release(true)" @twist="twist(true)"></OperationButton>
     </div>
   </div>
 </template>
