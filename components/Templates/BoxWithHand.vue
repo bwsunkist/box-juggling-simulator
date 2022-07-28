@@ -20,7 +20,7 @@ const { isHold, isRight, message, rotate } = toRefs(props)
 </script>
 
 <template>
-  <div :class="{ allWrap: true, holdRotate: rotate&&isHold, notHoldRotate: rotate&&!isHold }" :draggable="isHold">
+  <div :class="{ allWrap: true, holdRotateRight: rotate&&isHold&&isRight, holdRotateLeft: rotate&&isHold&&!isRight, notHoldRotate: rotate&&!isHold }" :draggable="isHold">
     <div class="boxWrap">
       <Box :message="message"></Box>
     </div>
@@ -36,14 +36,23 @@ const { isHold, isRight, message, rotate } = toRefs(props)
   padding: 0px;
   width: fit-content;
   height: 130px;
+  transition: transform 0.3s ease-out;
 }
-.holdRotate {
-  transform:rotate(180deg);
+.holdRotateRight {
+  transform:rotateZ(180deg);
   transform-origin: 50% 40%;
+  transition: transform 0.3s ease-out;
+}
+
+.holdRotateLeft {
+  transform:rotateZ(-180deg);
+  transform-origin: 50% 40%;
+  transition: transform 0.3s ease-out;
 }
 .notHoldRotate {
-  transform:rotate(180deg);
-  transform-origin: 50% 40%;
+  transform:rotateZ(180deg);
+  transform-origin: 50% 38%;
+  transition: transform 0.3s ease-out;
 }
 .boxWrap {
   width: fit-content;
