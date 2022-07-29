@@ -49,19 +49,49 @@ const twist = (isRight: boolean) => {
     }
   })
 }
+
+const dragHand = (event, isRight: boolean) => {
+  event.dataTransfer.effectAllowed = 'move'
+  event.dataTransfer.dropEffect = 'move'
+  event.dataTransfer.setData('dragHand', isRight ? 'rightHand' : 'leftHand')
+}
+const dropObject = (event, dropCategory) => {
+  const dragHandEvt = event.dataTransfer.getData('dragHand')
+  const dragBoxEvt = event.dataTransfer.getData('dragBox')
+  const targetBox = dropCategory
+
+  if (dragHandEvt) {
+    // dropCategory を確認
+    boxes.forEach((box, index) => {
+      if (box.message === targetBox && !box.isHold) {
+        boxes[index].isHold = true
+        if (dragHandEvt === 'rightHand') {
+          isShowRightHand.value = false
+          boxes[index].isRight = true
+        }
+        if (dragHandEvt === 'leftHand') {
+          isShowLeftHand.value = false
+          boxes[index].isRight = false
+        }
+      }
+    })
+  } else if (dragBoxEvt) {
+    // TODO
+  }
+}
 </script>
 
 <template>
   <div class="jugglingArea">
     <div class="leftHand">
-      <Hand :isHold="false" :isRight="false" v-show="isShowLeftHand"></Hand>
+      <Hand :isHold="false" :isRight="false" v-show="isShowLeftHand" :draggable="true" @dragstart="dragHand($event, false)"></Hand>
     </div>
     <div class="rightHand">
-      <Hand :isHold="false" :isRight="true" v-show="isShowRightHand"></Hand>
+      <Hand :isHold="false" :isRight="true" v-show="isShowRightHand" :draggable="true" @dragstart="dragHand($event, true)"></Hand>
     </div>
     <div class="boxWrap">
-      <div v-for="(box, index) in boxes" >
-        <BoxWithHand :message="box.message" :isHold="box.isHold" :isRight="box.isRight" :rotate="box.rotate"></BoxWithHand>
+      <div v-for="(box, index) in boxes" @drop="dropObject($event, `box${index + 1}`)" @dragover.prevent @dragenter.prevent>
+        <BoxWithHand :message="box.message" :isHold="box.isHold" :isRight="box.isRight" :rotate="box.rotate" :draggable="box.isHold"></BoxWithHand>
       </div>
     </div>
     <div class="operationArea">
