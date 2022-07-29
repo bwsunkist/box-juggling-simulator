@@ -61,23 +61,26 @@ const dropObject = (event, dropCategory) => {
   const targetBox = dropCategory
 
   if (dragHandEvt) {
-    // dropCategory を確認
-    boxes.forEach((box, index) => {
-      if (box.message === targetBox && !box.isHold) {
-        boxes[index].isHold = true
-        if (dragHandEvt === 'rightHand') {
-          isShowRightHand.value = false
-          boxes[index].isRight = true
-        }
-        if (dragHandEvt === 'leftHand') {
-          isShowLeftHand.value = false
-          boxes[index].isRight = false
-        }
-      }
-    })
+    hangBox(dragHandEvt, targetBox)
   } else if (dragBoxEvt) {
     // TODO
   }
+}
+
+const hangBox = (dragHandEvt: string, targetBoxName: string) => {
+  boxes.forEach((box, index) => {
+    if (box.message !== targetBoxName || box.isHold) return
+
+    boxes[index].isHold = true
+    if (dragHandEvt === 'rightHand') {
+      isShowRightHand.value = false
+      boxes[index].isRight = true
+    }
+    if (dragHandEvt === 'leftHand') {
+      isShowLeftHand.value = false
+      boxes[index].isRight = false
+    }
+  })
 }
 </script>
 
