@@ -1,5 +1,5 @@
 ## box-juffling-simulator
-[demo](https://raw.githubusercontent.com/wiki/bwsunkist/box-juggling-simulator/images/demo.gif)
+![demo](https://raw.githubusercontent.com/wiki/bwsunkist/box-juggling-simulator/images/demo.gif)
 
 #### 概要
 * シガーボックスジャグリングの動きを再現します
